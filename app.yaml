@@ -1,0 +1,96 @@
+runtime: php55
+api_version: 1
+threadsafe: true
+
+handlers:
+
+# Manifest files
+
+- url: /template
+  static_dir: template/share
+
+- url: /template
+  static_dir: template/admin
+
+- url: /template
+  static_dir: template/auth
+
+# - url: /files
+#   static_dir: static/files
+#   http_headers:
+#     X-Foo-Header: foo
+#     X-Bar-Header: bar value
+# Serve images as static resources.
+- url: /(.+\.(gif|png|jpg|jpeg))$
+  static_files: \1
+  upload: (.+\.(gif|png|jpg|jpeg))$
+  application_readable: true
+# Fonts and images
+
+- url: /(.+\.(eot|otf|tt[cf]|woff2?|cur|gif|ico|jpe?g|png|svgz?|webp))
+  static_files: \1
+  upload: (.+\.(eot|otf|tt[cf]|woff2?|cur|gif|ico|jpe?g|png|svgz?|webp))
+  http_headers:
+    # Allow cross-origin access to web fonts and images
+    # You can also replace "*" with a specific host, e.g. https://example.org
+    Access-Control-Allow-Origin: "*"
+
+
+# Serve php scripts.
+- url: /(.+\.(htm|html|css|js))$
+  static_files: \1
+  upload: (.+\.(htm|html|css|js))$
+  application_readable: true
+
+- url: /(.+\.php)$
+  script: \1
+
+- url: /admin/cat/(.+\.php)$
+  script: admin/cat/\1
+
+- url: /admin/comment/(.+\.php)$
+  script: admin/comment/\1
+
+- url: /admin/contact/(.+\.php)$
+  script: admin/contact/\1
+
+- url: /admin/news/(.+\.php)$
+  script: admin/news/\1
+
+- url: /admin/slide/(.+\.php)$
+  script: admin/slide/\1
+
+- url: /admin/user/(.+\.php)$
+  script: admin/user/\1
+
+- url: /admin/(.+\.php)$
+  script: admin/\1
+
+
+- url: /auth/share/(.+\.php)$
+  script: auth/share/\1
+##
+- url: /admin/cat/.*
+  script: admin/cat/index.php
+
+- url: /admin/comment/.*
+  script: admin/comment/index.php
+
+- url: /admin/contact/.*
+  script: admin/contact/index.php
+
+- url: /admin/news/.*
+  script: admin/news/index.php
+
+- url: /admin/slide/.*
+  script: admin/slide/index.php
+
+- url: /admin/user/.*
+  script: admin/user/index.php
+
+- url: /admin/.*
+  script: admin/index.php
+
+- url: /.*
+  script: index.php
+

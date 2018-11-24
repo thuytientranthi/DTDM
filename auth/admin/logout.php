@@ -1,0 +1,12 @@
+<?php
+    session_start();
+    ob_start();
+    if(isset($_SESSION['userInfo'])){
+        unset($_SESSION['userInfo']);
+        header('Location:/auth/admin/login.php');
+        die();
+    }
+    header('Location:/auth/admin/login.php');
+    die();
+    ob_end_flush();
+?>

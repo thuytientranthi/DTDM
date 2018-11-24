@@ -1,0 +1,52 @@
+RewriteEngine On
+RewriteBase /
+
+#index.php => / trang-chu.html
+RewriteRule ^trang-chu.html$ index.php
+
+#contact.php => / contact / lien-he.html
+RewriteRule ^lien-he.html$ contact.php
+
+#cat.php?id=2&page=1 => danh-muc/tinh-ban-than-2/trang-1.html
+RewriteRule ^danh-muc/(.*)-([0-9]+)/trang-([0-9]+).html cat.php?id=$2&page=$3
+
+#cat.php?id=2 => danh-muc/tinh-ban-than-2.html
+RewriteRule ^danh-muc/(.*)-([0-9]+).html cat.php?id=$2
+
+#/detail.php?id=32 => chi-tiet/toi-nhu-anh-duong-ruc-ro-32.html
+RewriteRule ^chi-tiet/(.*)-([0-9]+).html detail.php?id=$2
+
+#?page=1 => trang-chu/trang-1.html
+RewriteRule ^trang-chu/trang-([0-9]+).html ?page=$1
+
+#auth/share/login.php => dang-nhap.html
+RewriteRule ^dang-nhap.html$ auth/share/login.php
+
+#auth/share/resign.php => dang-ky.html
+RewriteRule ^dang-ky.html$ auth/share/resign.php
+
+#auth/share/forgot.php => quen-mat-khau.html
+RewriteRule ^quen-mat-khau.html$ auth/share/forgot.php
+
+#auth/share/editpass.php?id=1 => quen-mat-khau-1.html
+RewriteRule ^quen-mat-khau-([0-9]+).html$ auth/share/editpass.php?id=$1
+
+#auth/share/logout.php => dang-xuat.html
+RewriteRule ^dang-xuat.html$ auth/share/logout.php
+
+#auth/admin/login.php => quan-ly/dang-nhap.html
+RewriteRule ^quan-ly/dang-nhap.html$ auth/admin/login.php
+
+#auth/admin/logout.php => quan-ly/dang-xuat.html
+RewriteRule ^quan-ly/dang-xuat.html$ auth/admin/logout.php
+
+#/admin => quan-ly/dang-nhap.html
+RewriteRule ^quan-ly/dang-nhap.html$ admin
+
+#auth/share/edit.php?id=1 => chinh-sua-thong-tin-1.html
+RewriteRule ^chinh-sua-thong-tin-([0-9]+).html$ auth/share/edit.php?id=$1
+
+#search.php => tim-kiem.html
+RewriteRule ^tim-kiem.html$ search.php
+
+ErrorDocument 404 /404.php
